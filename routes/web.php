@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\OneController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'one'], function () {
+    Route::get('/', [OneController::class, 'index']);
+    Route::get('/default', [OneController::class, 'default']);
+});
+
+
